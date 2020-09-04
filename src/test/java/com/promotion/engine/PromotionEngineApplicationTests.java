@@ -18,11 +18,6 @@ public class PromotionEngineApplicationTests
 {
     private static List<SKUUnit> skuUnits;
 
-    @Test
-    public void contextLoads()
-    {
-    }
-
     @Test(description = "test checkout engine with multiplier type promotion")
     public void testCheckoutEngineWithMultiplierPromotion() throws IOException
     {
