@@ -1,6 +1,5 @@
 ext {
     jacksonDatatype = '2.10.1'
-    lombokVersion = '1.18.12'
     springBootVersion = '2.3.3.RELEASE'
 }
 
@@ -25,7 +24,6 @@ sourceSets {
             srcDirs = ['src/test/resources']
         }
         dependencies {
-            testCompile group: 'org.hamcrest', name: 'hamcrest-all', version: '1.3'
             testCompile group: 'org.testng', name: 'testng', version: '6.14.3'
         }
     }

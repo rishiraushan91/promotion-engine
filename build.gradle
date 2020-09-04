@@ -19,6 +19,7 @@ repositories {
 }
 
 apply from: 'gradleconfig/sourceLibrary.gradle'
+apply from: 'gradleconfig/testTasks.gradle'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
@@ -31,6 +32,6 @@ dependencies {
     }
 }
 
-test {
+/*test {
     useJUnitPlatform()
-}
+}*/

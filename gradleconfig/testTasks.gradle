@@ -1,0 +1,18 @@
+test {
+    description "Run promotion engine checkout process"
+    dependsOn assemble
+
+    useTestNG {
+        useDefaultListeners = true
+        suites 'src/test/resources/test.xml'
+    }
+    scanForTestClasses false
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+task all {
+    group "tests"
+    dependsOn test
+}
