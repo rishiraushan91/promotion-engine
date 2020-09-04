@@ -1,6 +1,7 @@
 package com.promotion.engine;
 
 import com.promotion.engine.model.SKUUnit;
+import com.promotion.engine.model.enums.PromotionTypes;
 import com.promotion.engine.service.CheckoutEngineService;
 import com.promotion.engine.utils.PromotionEngineUtils;
 import org.json.JSONObject;
@@ -27,7 +28,7 @@ public class PromotionEngineApplicationTests
     {
         skuUnits = getSkuUnits("sku_unit2.json");
         CheckoutEngineService checkoutEngine = new CheckoutEngineService();
-        long actual = checkoutEngine.skuCheckoutPrice(skuUnits, "all");
+        long actual = checkoutEngine.skuCheckoutPrice(skuUnits, PromotionTypes.MULTIPLIER.getType());
 
         printPrettySkuCheckoutDetails("sku_unit2.json", actual);
 
@@ -36,21 +37,39 @@ public class PromotionEngineApplicationTests
     }
 
     @Test(description = "test checkout engine with adder type promotion")
-    public void testCheckoutEngineWithAdderPromotion()
+    public void testCheckoutEngineWithAdderPromotion() throws IOException
     {
+        skuUnits = getSkuUnits("sku_unit3.json");
+        CheckoutEngineService checkoutEngine = new CheckoutEngineService();
+        long actual = checkoutEngine.skuCheckoutPrice(skuUnits, PromotionTypes.ADDER.getType());
 
+        printPrettySkuCheckoutDetails("sku_unit3.json", actual);
+
+        assertEquals(actual, 330);
     }
 
     @Test(description = "test checkout engine with all type promotion")
-    public void testCheckoutEngineWithAllPromotion()
+    public void testCheckoutEngineWithAllPromotion() throws IOException
     {
+        skuUnits = getSkuUnits("sku_unit3.json");
+        CheckoutEngineService checkoutEngine = new CheckoutEngineService();
+        long actual = checkoutEngine.skuCheckoutPrice(skuUnits, PromotionTypes.ALL.getType());
 
+        printPrettySkuCheckoutDetails("sku_unit3.json", actual);
+
+        assertEquals(actual, 280);
     }
 
     @Test(description = "test checkout engine with no promotion")
-    public void testCheckoutEngineWithNonePromotion()
+    public void testCheckoutEngineWithNonePromotion() throws IOException
     {
+        skuUnits = getSkuUnits("sku_unit1.json");
+        CheckoutEngineService checkoutEngine = new CheckoutEngineService();
+        long actual = checkoutEngine.skuCheckoutPrice(skuUnits, PromotionTypes.NONE.getType());
 
+        printPrettySkuCheckoutDetails("sku_unit3.json", actual);
+
+        assertEquals(actual, 100);
     }
 
     private void printPrettySkuCheckoutDetails(String inputSkuUnitFile, long checkoutPrice)
@@ -62,8 +81,8 @@ public class PromotionEngineApplicationTests
         System.out.println(new JSONObject(PromotionEngineUtils.SKU_PRICE).toString(2));
         System.out.println("\n******* SKU Input ******");
         System.out.println(new JSONObject(inputSkuUnit).toString(2));
-        System.out.println("\n***** Checkout Promotion Price ****");
-        System.out.println("*****Total:\t" + checkoutPrice + " *****");
+        System.out.println("***** Checkout Promotion Price ****");
+        System.out.println("***** Total:\t" + checkoutPrice + " *****");
     }
 
 }
