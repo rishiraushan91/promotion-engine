@@ -23,6 +23,10 @@ import static com.promotion.engine.utils.PromotionEngineUtils.getSkuUnits;
 @Slf4j
 public class CheckoutEngineService
 {
+    public Long skuCheckoutPrice(List<SKUUnit> inputSkuUnits, String promotionType) throws IOException
+    {
+        return checkoutSku(inputSkuUnits, promotionType).stream().mapToLong(SKUCheckoutPrice::getPrice).sum();
+    }
 
     public List<SKUCheckoutPrice> checkoutSku(List<SKUUnit> inputSkuUnits, String promotionType) throws IOException
     {
@@ -31,12 +35,12 @@ public class CheckoutEngineService
         LinkedHashMap<String, SKUUnit> inputSkuUnitMap =
                 inputSkuUnits.stream().collect(Collectors.toMap(SKUUnit::getSku,
                         Function.identity(), (e1, e2) -> e1, LinkedHashMap::new));
-        log.info("skuUnits: {}", inputSkuUnitMap);
+        log.info("\nSKU Units: {}", inputSkuUnitMap);
 
         List<SKUPrice> skuPrices = getSkuPrices();
         LinkedHashMap<String, Long> skuPriceMap = skuPrices.stream().collect(Collectors.toMap(SKUPrice::getSku,
                 SKUPrice::getPrice, (e1, e2) -> e1, LinkedHashMap::new));
-        log.info("skuPrices: {}", skuPriceMap);
+        log.info("\nSKU Prices: {}", skuPriceMap);
 
         if (promotionType.equals(PromotionTypes.MULTIPLIER.getType())
                 || promotionType.equals(PromotionTypes.ALL.getType()))
@@ -68,7 +72,7 @@ public class CheckoutEngineService
         LinkedHashMap<List<String>, AdderPromotion> adderPromotionMap =
                 promotions.stream().collect(Collectors.toMap(AdderPromotion::getSku, Function.identity(),
                         (e1, e2) -> e1, LinkedHashMap::new));
-        log.info("adder promotions: {}", adderPromotionMap);
+        log.info("\nAdder promotions: {}", adderPromotionMap);
 
         adderPromotionMap.forEach((key, value) ->
         {
@@ -90,7 +94,7 @@ public class CheckoutEngineService
         LinkedHashMap<String, MultiplierPromotion> multiplierPromotionMap =
                 promotions.stream().collect(Collectors.toMap(MultiplierPromotion::getSku, Function.identity(),
                         (e1, e2) -> e1, LinkedHashMap::new));
-        log.info("multiplier promotions: {}", multiplierPromotionMap);
+        log.info("\nMultiplier promotions: {}", multiplierPromotionMap);
 
         multiplierPromotionMap.forEach((key, value) ->
         {
