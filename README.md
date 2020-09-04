@@ -45,3 +45,82 @@ java -Xms6G -Xmx10G -cp promotion-engine-0.0.1-SNAPSHOT.jar -Dloader.main=com.pr
 or
 java -jar promotion-engine-0.0.1-SNAPSHOT.jar
 ```
+
+Sample run output :-
+```$xslt
+02:47:16.254 [TestNG-test=Promotion Engine Tests-1] INFO com.promotion.engine.service.CheckoutEngineService - 
+SKU Units: {A=SKUUnit(sku=A, unit=5, checkout=false), B=SKUUnit(sku=B, unit=5, checkout=false), C=SKUUnit(sku=C, unit=1, checkout=false)}
+02:47:16.254 [TestNG-test=Promotion Engine Tests-1] INFO com.promotion.engine.service.CheckoutEngineService - 
+SKU Prices: {A=50, B=30, C=20, D=15}
+02:47:16.255 [TestNG-test=Promotion Engine Tests-1] INFO com.promotion.engine.service.CheckoutEngineService - 
+Multiplier promotions: {A=MultiplierPromotion(sku=A, unit=3, price=130), B=MultiplierPromotion(sku=B, unit=2, price=45)}
+******* Promotions ******
+{
+  "multiplier_sku": [
+    {
+      "unit": 3,
+      "price": 130,
+      "sku": "A"
+    },
+    {
+      "unit": 2,
+      "price": 45,
+      "sku": "B"
+    }
+  ],
+  "adder_sku": [
+    {
+      "price": 30,
+      "sku": [
+        "C",
+        "D"
+      ]
+    },
+    {
+      "price": 20,
+      "sku": [
+        "E",
+        "F"
+      ]
+    }
+  ]
+}
+
+******* SKU Price ******
+{"sku_price": [
+  {
+    "price": 50,
+    "sku": "A"
+  },
+  {
+    "price": 30,
+    "sku": "B"
+  },
+  {
+    "price": 20,
+    "sku": "C"
+  },
+  {
+    "price": 15,
+    "sku": "D"
+  }
+]}
+
+******* SKU Input ******
+{"sku_unit": [
+  {
+    "unit": 5,
+    "sku": "A"
+  },
+  {
+    "unit": 5,
+    "sku": "B"
+  },
+  {
+    "unit": 1,
+    "sku": "C"
+  }
+]}
+***** Checkout Promotion Price ****
+***** Total:	370 *****
+```
