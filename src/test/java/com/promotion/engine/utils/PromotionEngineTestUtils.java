@@ -43,9 +43,4 @@ public class PromotionEngineTestUtils
         }
         return inputSkuUnit;
     }
-
-    public static void main(String[] args) throws IOException
-    {
-        System.out.println(getSkuUnits("sku_unit1.json"));
-    }
 }

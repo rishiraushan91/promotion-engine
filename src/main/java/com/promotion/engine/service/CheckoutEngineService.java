@@ -18,7 +18,6 @@ import java.util.stream.Collectors;
 import static com.promotion.engine.utils.PromotionEngineUtils.getAdderPromotions;
 import static com.promotion.engine.utils.PromotionEngineUtils.getMultiplierPromotions;
 import static com.promotion.engine.utils.PromotionEngineUtils.getSkuPrices;
-import static com.promotion.engine.utils.PromotionEngineUtils.getSkuUnits;
 
 @Slf4j
 public class CheckoutEngineService
@@ -168,17 +167,4 @@ public class CheckoutEngineService
 
         return checkoutPrices;
     }
-
-    public static void main(String[] args) throws IOException
-    {
-        CheckoutEngineService engineService = new CheckoutEngineService();
-
-        List<SKUCheckoutPrice> checkoutPrices = engineService.checkoutSku(getSkuUnits(), "all");
-        log.info("checkoutPrices: {}", checkoutPrices);
-        long totalPrice = checkoutPrices.stream().mapToLong(SKUCheckoutPrice::getPrice).sum();
-        log.info("***************");
-        log.info("Total Price: {}", totalPrice);
-
-    }
-
 }
