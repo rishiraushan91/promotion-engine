@@ -89,15 +89,4 @@ public class PromotionEngineUtils
         {
         });
     }
-
-    public static void main(String[] args) throws IOException
-    {
-        System.out.println(getMultiplierPromotions());
-
-        System.out.println(getAdderPromotions());
-
-        System.out.println(getSkuPrices());
-
-        System.out.println(getSkuUnits());
-    }
 }
