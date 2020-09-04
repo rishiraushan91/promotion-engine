@@ -1,0 +1,30 @@
+{
+  "multiplier_sku": [
+    {
+      "sku": "A",
+      "unit": 3,
+      "price": 130
+    },
+    {
+      "sku": "B",
+      "unit": 2,
+      "price": 45
+    }
+  ],
+  "adder_sku": [
+    {
+      "sku": [
+        "C",
+        "D"
+      ],
+      "price": 30
+    },
+    {
+      "sku": [
+        "E",
+        "F"
+      ],
+      "price": 20
+    }
+  ]
+}

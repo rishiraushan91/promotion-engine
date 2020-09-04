@@ -1,0 +1,20 @@
+{
+  "sku_price": [
+    {
+      "sku": "A",
+      "price": 50
+    },
+    {
+      "sku": "B",
+      "price": 30
+    },
+    {
+      "sku": "C",
+      "price": 20
+    },
+    {
+      "sku": "D",
+      "price": 15
+    }
+  ]
+}
