@@ -4,7 +4,7 @@
 
 There are many types of promotions. Currently promotion checkout engine supporting below type promotion offer.
 ```aidl
-1.  Mulitpler Promotion -   multiplier
+1.  Multiplier Promotion -   multiplier
     e.x:    buy 'n' items of a SKU for a fixed price (3 A's for 130)
 2.  Adder promotion     -   adder
     e.x:-   but SK1 & SK2 for a fixed price (C + D = 30)
